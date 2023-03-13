@@ -21,7 +21,7 @@ class InputBar extends React.Component {
         return(
             <div className="InputBar">
               <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Memo" autoComplete="off" required value={inputValue} onChange={this.handleInputChange} />
+                <input type="text" placeholder="Task" autoComplete="off" required value={inputValue} onChange={this.handleInputChange} />
                 <button type="submit" className="add">Add</button>
               </form>
             </div>

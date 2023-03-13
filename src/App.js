@@ -1,7 +1,7 @@
 import React from "react";
 import InputBar from "./components/InputBar";
 import Overview from "./components/Overview";
-import Footer from "./components/Footer";
+import './App.css';
 
 class App extends React.Component {
 
@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
     this.state = {
       input: '',
       tasks: [new Task(0, "SAMPLE TASK1")],
@@ -24,10 +25,18 @@ class App extends React.Component {
     const taskObject = new Task(this.state.nextId, this.state.input);
     this.setState({
       input: '',
-      tasks: [...this.state.tasks, taskObject],
+      tasks: this.state.tasks.concat(taskObject),
       nextId: this.state.nextId + 1
     });
     event.preventDefault();
+  }
+
+  deleteTask(event) {
+    console.log("CLICKED APP")
+    console.log(event.target.id);
+    this.setState({
+      tasks: this.state.tasks.filter((task) => task.id !== Number(event.target.id))
+    });
   }
 
   render() {
@@ -38,8 +47,8 @@ class App extends React.Component {
           onInputChange={this.handleInputChange} 
           onSubmit={this.handleSubmit} />
         <Overview 
-          tasks={this.state.tasks} />
-        <Footer />
+          tasks={this.state.tasks}
+          onClickDelete={this.deleteTask} />
       </div>
     );
   }
@@ -50,7 +59,6 @@ class Task {
   constructor(id, name) {
     this.id = id;
     this.name = name;
-    this.isDone = false;
   }
 }
 

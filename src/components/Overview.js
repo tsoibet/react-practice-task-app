@@ -4,13 +4,23 @@ class Overview extends React.Component {
     
   constructor(props) {
     super(props);
+    this.handleClickDelete = this.handleClickDelete.bind(this);
+  }
+
+  handleClickDelete(event) {
+    console.log("CLICKED OVERVIEW")
+    this.props.onClickDelete(event);
   }
 
   render() {
     return(
-      <div className="Overview">
-        {this.props.tasks.map((task) => <TaskItem key={task.id} task={task} />)}
-      </div>
+      <ul className="Overview">
+        {this.props.tasks.map((task) => 
+          <TaskItem 
+            key={task.id} 
+            task={task} 
+            handleClickDelete={this.handleClickDelete} />)}
+      </ul>
     );
   }
 
@@ -20,16 +30,21 @@ class TaskItem extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleClickDelete = this.handleClickDelete.bind(this);
+  }
+
+  handleClickDelete(event) {
+    console.log("CLICKED TASKITEM")
+    this.props.handleClickDelete(event);
   }
 
   render() {
     return(
-      <div className="task" id={this.props.task.id}>
+      <li className="task">
+        <div className="id">{this.props.task.id}</div>
         <div className="name">{this.props.task.name}</div>
-        <div className={`status${this.props.task.isDone ? ' done' : ''}`}>
-          {this.props.task.isDone ? ' Done!' : '...'}
-        </div>
-      </div>
+        <div className="delete" id={this.props.task.id} onClick={this.handleClickDelete}>X</div>
+      </li>
     );
   }
 

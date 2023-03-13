@@ -1,0 +1,22 @@
+.App {
+  padding: 1rem;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.task .id::after {
+  content: ".";
+}
+
+.delete {
+  color: red;
+}
