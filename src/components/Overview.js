@@ -8,7 +8,6 @@ class Overview extends React.Component {
   }
 
   handleClickDelete(event) {
-    console.log("CLICKED OVERVIEW")
     this.props.onClickDelete(event);
   }
 
@@ -34,7 +33,6 @@ class TaskItem extends React.Component {
   }
 
   handleClickDelete(event) {
-    console.log("CLICKED TASKITEM")
     this.props.handleClickDelete(event);
   }
 
@@ -43,7 +41,7 @@ class TaskItem extends React.Component {
       <li className="task">
         <div className="id">{this.props.task.id}</div>
         <div className="name">{this.props.task.name}</div>
-        <div className="delete" id={this.props.task.id} onClick={this.handleClickDelete}>X</div>
+        <div className="delete" data-id={this.props.task.id} onClick={this.handleClickDelete}>X</div>
       </li>
     );
   }

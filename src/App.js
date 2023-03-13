@@ -32,10 +32,8 @@ class App extends React.Component {
   }
 
   deleteTask(event) {
-    console.log("CLICKED APP")
-    console.log(event.target.id);
     this.setState({
-      tasks: this.state.tasks.filter((task) => task.id !== Number(event.target.id))
+      tasks: this.state.tasks.filter((task) => task.id !== Number(event.target.dataset.id))
     });
   }
 
