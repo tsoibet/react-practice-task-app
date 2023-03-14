@@ -2,15 +2,15 @@
   padding: 1rem;
 }
 
-.task {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 1rem;
-}
-
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 1rem;
 }
 
 .task .id::after {
@@ -19,4 +19,8 @@ ul {
 
 .delete {
   color: red;
+}
+
+.button {
+  cursor: pointer;
 }
